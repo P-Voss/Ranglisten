@@ -92,7 +92,7 @@ FROM
             @curRank :=0,
             @prevRank := NULL,
             @incRank := 1 
-        ) AS r
+        ) AS count
     ) AS Rangliste
 SQL;
 

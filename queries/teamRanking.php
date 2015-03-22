@@ -95,7 +95,7 @@ FROM (
     ) AS Ergebnis, 
     (
     SELECT @curRank :=0, @prevRank := NULL, @incRank := 1
-    ) r 
+    ) AS count 
 ) AS rangliste
 SQL;
 
