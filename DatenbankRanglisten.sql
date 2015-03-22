@@ -25,7 +25,7 @@ CREATE TABLE `persons` (
   `nachname` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `team_id` int(11) NOT NULL,
   PRIMARY KEY (`person_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of persons
@@ -55,7 +55,7 @@ CREATE TABLE `result_simple` (
   `person_id` int(11) NOT NULL,
   `points` int(11) NOT NULL,
   PRIMARY KEY (`result_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of result_simple
@@ -86,7 +86,7 @@ CREATE TABLE `results` (
   `person_id` int(11) NOT NULL,
   `points` int(11) NOT NULL,
   PRIMARY KEY (`result_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of results
@@ -250,7 +250,7 @@ CREATE TABLE `teams` (
   `team_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`team_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of teams
