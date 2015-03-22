@@ -1,0 +1,21 @@
+#navigation{
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+#navigation a{
+    border: 1px solid black;
+    border-radius: 5px;
+    background: silver;
+    margin: 2em;
+    text-decoration: none;
+}
+
+.content{
+    display: inline-block;
+    float: left;
+    max-width: 49%;
+}
+.content fieldset{
+    margin: 0 auto;
+}
