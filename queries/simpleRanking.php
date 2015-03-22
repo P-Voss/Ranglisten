@@ -2,26 +2,31 @@
 
 $sqlCalc = <<<SQL
 SELECT
-    points,
-    person_id,
+    main.person_id AS Person_ID, 
+    persons.vorname AS Vorname, 
+    persons.nachname AS Nachname, 
+    main.points AS Punkte,
     (SELECT
         COUNT(*)+1 
     FROM
-        result_simple b 
+        result_simple sub 
     WHERE
-        b.points > a.points
-    ) AS rang 
+        sub.points > main.points
+    ) AS Rang 
 FROM
-    result_simple a   
-ORDER BY
-    rang
+    result_simple main   
+LEFT JOIN persons 
+    ON main.person_id = persons.person_id
+ORDER BY rang, persons.person_id
 SQL;
 
 $sqlCount = <<<SQL
 SELECT
-    points,
-    person_id,
-    rang 
+    rangliste.person_id AS Person_ID,
+    persons.vorname AS Vorname, 
+    persons.nachname AS Nachname, 
+    rangliste.points AS Punkte, 
+    rangliste.rang AS Rang 
 FROM
     (SELECT
         points,
@@ -36,7 +41,9 @@ FROM
             @prevRank := NULL,
             @incRank := 1) AS count 
     ORDER BY
-        points DESC  
-    ) AS rangliste
+        points DESC, person_id 
+    ) AS rangliste 
+LEFT JOIN persons 
+    ON rangliste.person_id = persons.person_id 
 SQL;
 

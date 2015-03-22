@@ -2,7 +2,10 @@
 
 $sqlCalc = <<<SQL
 SELECT 
-    persons.person_id, persons.vorname, persons.nachname, SUM(result.punkte) gesamtpunktzahl, 
+    persons.person_id AS Person_ID, 
+    persons.vorname AS Vorname, 
+    persons.nachname AS Nachname, 
+    SUM(result.punkte) AS Punkte, 
     (SELECT 
         COUNT(*) +1 
     FROM 
@@ -30,7 +33,7 @@ SELECT
     ) AS Ergebnis 
     WHERE 
         Ergebnis.person_id = persons.person_id 
-) AS rang 
+    ) AS Rang 
 FROM 
     persons 
 LEFT JOIN ( 
@@ -42,20 +45,20 @@ LEFT JOIN (
     GROUP BY 
         person_id 
     ) AS result 
-        ON persons.person_id = result.person_id 
+    ON persons.person_id = result.person_id 
 GROUP BY 
     persons.person_id 
 ORDER BY 
-    Gesamtpunktzahl DESC
+    Punkte DESC, person_id
 SQL;
 
 $sqlCount = <<<SQL
 SELECT
-    person_id,
-    vorname,
-    nachname,
-    gesamtpunktzahl,
-    rang    
+    person_id AS Person_ID,
+    vorname AS Vorname,
+    nachname AS Nachname,
+    gesamtpunktzahl AS Punkte,
+    rang AS Rang 
 FROM
     (SELECT
         Ergebnis.*,
@@ -83,7 +86,7 @@ FROM
         GROUP BY
             persons.person_id     
         ORDER BY
-            Gesamtpunktzahl DESC   
+            Gesamtpunktzahl DESC, persons.person_id   
         ) AS Ergebnis ,
         (SELECT
             @curRank :=0,
