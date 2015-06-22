@@ -43,6 +43,7 @@ $timeCalc = takeTimeInMs($db->query('SHOW PROFILE FOR QUERY 2')->fetchAll());
             </a>
         </div>
         <div class="content">
+		<h1>Der Vergleich</h1>
             <fieldset>
                 <legend>
                     Output
